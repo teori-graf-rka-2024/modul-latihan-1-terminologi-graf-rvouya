@@ -7,7 +7,7 @@ def create_graph(edges: list[tuple[int, int]]) -> nx.Graph:
     return G
 
 def get_degree(G: nx.Graph, node: int) -> int:
-    return G.degree[node]
+    return G.degree[node] BLAAAA
 
 def dfs_traversal(G: nx.Graph, start: int) -> list[int]:
     return list(nx.dfs_preorder_nodes(G, start))
