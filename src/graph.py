@@ -1,23 +1,29 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
-G = nx.Graph()
-
 def create_graph(edges: list[tuple[int, int]]) -> nx.Graph:
+    G = nx.Graph()
     G.add_edges_from(edges)
+    return G
 
 def get_degree(G: nx.Graph, node: int) -> int:
-    return dict(G.degree)[node]
+    return G.degree[node]
 
 def dfs_traversal(G: nx.Graph, start: int) -> list[int]:
-    return nx.dfs_preorder_nodes(G, start)
+    return list(nx.dfs_preorder_nodes(G, start))
 
 def bfs_traversal(G: nx.Graph, start: int) -> list[int]:
-    return nx.bfs_edges(G, start)
+    edges = nx.bfs_edges(G, start)
+    nodes = [start] + [v for u, v in edges]
+    return nodes
 
 def find_shortest_path(G: nx.Graph, source: int, target: int) -> list[int]:
-    return nx.shortest_path(G, source, target)
+    try:
+        return nx.shortest_path(G, source, target)
+    except nx.NetworkXNoPath:
+        return None
 
 def visualize_graph(G: nx.Graph) -> None:
-    nx.draw_circular(G, with_labels=True)
+    nx.draw(G, with_labels=True)
+    plt.savefig("graph.png")
     plt.show()
