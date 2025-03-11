@@ -20,5 +20,5 @@ print(len(G.edges))
 print(g.get_degree(G, 2))
 print(g.dfs_traversal(G, 1))
 print(g.bfs_traversal(G, 1))
-print(g.find_shortest_path(G, 1, 4)) # gimana caranya supaya tidak ketemu? kan edge_list pasti ada pasangan dong??
+print(g.find_shortest_path(G, 1, 4)) 
 g.visualize_graph(G)
